@@ -1,18 +1,22 @@
 from django.db import models
 
 class Pages(models.Model):
-    title = models.CharField('Название', max_length=50)
+    title = models.CharField('Название', max_length=250)
     text = models.TextField('Статья')
+    def __str__(self):
+        return self.title
 
 class News(models.Model):
-    title = models.CharField('Название', max_length=50)
-    anons = models.CharField('Анонс', max_length=250)
+    title = models.CharField('Название', max_length=250)
     full_text = models.TextField('Статья')
-    date = models.DateTimeField('Дата публикации')
-    main_photo = models.ImageField('Главное фото')
+    date = models.DateField('Дата публикации')
+    photo = models.CharField('Главное фото', max_length=250)
+
+    def __str__(self):
+        return self.title
 
 class Videos(models.Model):
-    title = models.CharField('Название', max_length=50)
+    title = models.CharField('Название', max_length=250)
     date = models.DateTimeField('Дата публикации')
     video = models.CharField('Видео', max_length=250)
     connecting_to_pages = models.ManyToManyField(
@@ -27,9 +31,8 @@ class Videos(models.Model):
     )
 
 class Photos(models.Model):
-    photo = models.ImageField('Фото')
-    date = models.DateTimeField('Дата публикации')
-    title = models.CharField('Название', max_length=50)
+    photo = models.CharField('Фото', max_length=250)
+    title = models.CharField('Название', max_length=250)
     connecting_to_pages = models.ManyToManyField(
         Pages,
         through='Pages_Photos',
@@ -41,14 +44,20 @@ class Photos(models.Model):
         through_fields=('photo_id', 'news_id'),
     )
 
+    def __str__(self):
+        return self.title
+
+
 class Photosets(models.Model):
-    title = models.CharField('Название', max_length=50)
-    date = models.DateTimeField('Дата публикации')
+    title = models.CharField('Название', max_length=250)
+    title_photo = models.CharField('Титульное фото', max_length=250)
     connecting_to_photos = models.ManyToManyField(
         Photos,
         through='Photosets_Photos',
         through_fields=('photoset_id', 'photo_id'),
     )
+    def __str__(self):
+        return self.title
 
 class Pages_Videos(models.Model):
     page_id = models.ForeignKey(Pages, on_delete=models.CASCADE)

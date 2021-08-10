@@ -1,0 +1,124 @@
+.mf{visibility: hidden; z-index:1; color:#000; font-size:14px; width: 80%;}
+.mf * {
+  outline:none;
+  border:none;
+  padding:0;
+  margin:0;
+}
+.mf div.loader{
+  position:absolute;
+  text-align:center;
+  z-index:10000;
+  margin:0 auto;
+  top:20%;
+  width:100%;
+  background:url(/static/animals/img/loading.gif) no-repeat 50% 0;
+  padding:50px 0;
+}
+.mf div.caption {
+        font: 14px Verdana, Tahoma, sans-serif;
+  position:absolute;
+  background:none;
+  text-align:center;
+  z-index:98;
+  margin:1em auto;
+  bottom:30px;
+  width:100%;
+}
+.mf div.mfNav{
+  position:absolute;
+  z-index:99;
+  margin:0 auto;
+  text-align:center;
+  width:100%;
+  bottom:20px;
+  font-size:1px;
+  line-height:1px;
+  width:100%;
+}
+.mf div.autoPlayCon{
+  float:left;
+  width:10%;
+  padding-left:3%;
+  height:24px;
+}
+.mf a.play, .mf a.stop{
+  width:27px;
+  height:24px;
+  float:left;
+  cursor:pointer;
+}
+.mf a.play{
+  background:url(/img/MooFlow/play.gif) no-repeat;
+}
+.mf a.stop{
+  background:url(/img/MooFlow/stop.gif) no-repeat;
+}
+.mf div.sliderCon{
+  margin-top:5px;
+  float:left;
+  width:74%;
+}
+.mf a.sliderNext{
+  background:url(/img/MooFlow/left.gif) no-repeat;
+}
+.mf a.sliderPrev{
+  background:url(/img/MooFlow/right.gif) no-repeat;
+}
+.mf a.sliderNext, a.sliderPrev{
+  text-decoration:none;
+  width:25px;
+  height:16px;
+  cursor:pointer;
+  float:left;
+}
+.mf div.resizeCon{
+  float:right;
+  width:10%;
+  padding-right:3%;
+  height:24px;
+}
+.mf a.resize{
+  width:34px;
+  height:24px;
+  float:right;
+  cursor:pointer;
+  background:url(/img/MooFlow/resize.gif) no-repeat;
+}
+.mf div.slider{
+  background:url(/img/MooFlow/middle.gif) repeat-x;
+  height:16px;
+  position:relative;
+  text-align:left;
+  float:left;
+}
+.mf div.knob{
+  height:16px;
+  background:url(/img/MooFlow/middle-slider.gif) repeat-x right center;
+}
+.mf div.knobleft{
+  background:url(/img/MooFlow/left-slider.gif) repeat-x center;
+  width:8px;
+  height:16px;
+}
+
+.coverflow {
+    clear:both;
+    overflow:hidden;
+    position:relative;
+    zoom: 1;
+}
+
+.coverflow .left,
+.coverflow .right {
+    display:block;
+    position: absolute;
+    top:35%;
+    z-index: 2;
+}
+.coverflow .left {
+    left:0.4%;
+}
+.coverflow .right {
+    right:0.4%;
+}

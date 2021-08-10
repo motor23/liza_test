@@ -1,0 +1,121 @@
+.index_right_block .menu .item,
+.doc_bottom_block .menu .item,
+.doc_bottom_block .map,
+body {
+  background-color: #7d6138;
+}
+
+h2 {
+  color: #7d4b00;
+}
+
+.timeline a,
+.multimedia_main_block .types a,
+.news .title a,
+.news .title h3,
+.news .title .date span {
+  color: #7d6138;
+}
+
+.index_main_block {
+  background-image: url(/static/tiger/img/index-bg.jpg);
+}
+
+.doc_bottom_block .map a,
+.index_right_block .menu .item {
+  background-image: url(/static/tiger/img/menu-item-bg.png);
+}
+
+.doc_bottom_block .menu .item {
+  background-image: url(/static/tiger/img/bottom-menu-item-bg.png);
+}
+
+.media_line {
+  background-image: url(/static/tiger/img/medialine-bg.png);
+}
+
+.media_caption {
+  background-color: #533e1f;
+}
+
+.index_right_block .map a {
+  color: #716149;
+}
+
+.doc_bottom_block .map a {
+  color: #f2d8b5;
+  background-color: #cc7502;
+}
+
+.timeline {
+  background-image: url(/static/tiger/img/month-ruler.png);
+}
+
+.timeline .active,
+.timeline a {
+  color: #ffad5c;
+}
+
+#paper span {
+  background-image: url(/static/tiger/img/point.png);
+}
+
+#paper .last_point {
+  background-image: url(/static/tiger/img/last_point.png);
+}
+
+#photos a {
+  border: 2px solid #533e1f;
+}
+
+.album a:hover {
+  border-color: #7d6138;
+}
+
+.album-photo span,
+.album span {
+  background-color: #d07900;
+}
+
+/* specific */
+.timeline .years {
+  right: 10px;
+}
+
+#paper span {
+  width: 55px;
+  height: 40px;
+  padding-left: 10px;
+  padding-top: 3px;
+  overflow: visible;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+/* map */
+.disclamer
+{
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   width: 870px;
+   background: url(/static/tiger/img/bgDisclamer.png) left bottom no-repeat;
+   overflow: visible;
+}
+
+/* index */
+.announces .all a
+{
+   color: #8a5d19;
+   text-decoration: none;
+}
+
+.announces .all .iTarget span.l
+{
+   background: url(/static/tiger/img/arrow-m.gif) right center no-repeat;
+   width: 5px;
+   padding: 0px 0px 0px 7px;
+   text-decoration: none;
+}
+
+

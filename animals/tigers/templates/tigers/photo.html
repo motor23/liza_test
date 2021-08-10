@@ -1,0 +1,36 @@
+{%extends 'tigers/multimedia.html'%}
+{% load static %}
+
+{% block main %}
+
+
+
+
+
+
+    {% for a in albums %}
+              {% if forloop.counter0|divisibleby:"2" %}
+      <div class="album">
+        <a href="/tigers/multimedia/photos/{{a.id}}">
+          <img alt="{{a.title}}" src={% static a.title_photo %} />
+        </a>
+        <span></span>
+        <p>{{a.title}}</p>
+      </div>
+              {%else%}
+
+
+      <div class="album">
+        <a href="/tigers/multimedia/photos/{{a.id}}">
+          <img alt="{{a.title}}" src={% static a.title_photo %} />
+        </a>
+        <span>5</span>
+        <p>{{a.title}}</p>
+      </div>
+
+
+    <div style="clear: both;"></div>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

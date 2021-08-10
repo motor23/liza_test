@@ -1,0 +1,128 @@
+.scrollControlsY
+{
+    display:block;
+    position: absolute;
+    top:0;
+    right: 12px;
+    height:100%;
+    width: 24px;
+    background: url(/patron/static/animals/img/scroll/scrollBar.gif) repeat-y right top;
+}
+
+.upBtn
+{
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    right: 0px;
+    top: 0px;
+    width: 24px;
+    height: 28px;
+    background: url(/patron/static/animals/img/scroll/upBtn.gif) no-repeat 0 0;
+    cursor:pointer;
+}
+
+.upBtn:hover
+{
+    background: url(/patron/static/animals/img/scroll/upBtn.gif) no-repeat 0 0px;
+}
+
+.upBtn-Active, .upBtn-Active:hover
+{
+    background: url(/patron/static/animals/img/scroll/upBtn.gif) no-repeat 0 0px;
+}
+
+.downBtn
+{
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 24px;
+    height: 28px;
+    background: url(/patron/static/animals/img/scroll/downBtn.gif) no-repeat 0px 0px;
+    cursor:pointer;
+}
+
+.downBtn-Active, .downBtn-Active:hover
+{
+    background: url(/patron/static/animals/img/scroll/downBtn.gif) no-repeat 0 0;
+}
+
+.scrollBar
+{
+    display:block;
+    position: absolute;
+    top: 4px;
+    right: 0px;
+    padding: 0px 0px 0px 0px;   
+    bottom: 30px;
+    width: 24px;
+}
+
+.scrollHandle
+{
+    display:block;
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    width: 24px;
+    height: 35px;
+    min-height: 4px;
+    cursor: pointer;
+    padding: 11px 0px;
+    margin: 13px 0px 0px 0px;
+}
+
+.scrollHandleBG
+{
+    display:block;
+    position: relative;
+    height: 100%;
+    width: 24px;
+    background: url(/patron/static/animals/img/scroll/scrollHandleBG.gif) repeat-y 0 0 ;
+}
+
+.scrollHandle .scrollHandleBG:hover, .scrollHandle:hover .scrollHandleBG
+{
+    background: url(/patron/static/animals/img/scroll/scrollHandleBG.gif) repeat-y 0px 0;
+}
+
+.scrollHandle-Active .scrollHandleBG:hover, .scrollHandle-Active:hover .scrollHandleBG, .scrollHandle-Active .scrollHandleBG
+{
+    background: url(/patron/static/animals/img/scroll/scrollHandleBG.gif) repeat-y 0px 0;
+}
+
+.scrollHandleMiddle
+{
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 13px;
+    top:50%;
+    margin:-5px 0px 0px 0px;
+}
+
+.scrollHandleTop{
+    display:none;
+    position:absolute;
+    width: 24px;
+    height:11px;
+    top: 8px;
+    margin:0 0 0 0;
+}
+
+.scrollHandleBottom
+{
+    display: none;
+    position: absolute;
+    width: 24px;
+    height:11px;
+    bottom: 10px;
+    margin: 0 0 0 0;
+}
+
+.contentEl
+{
+    position:relative;
+}

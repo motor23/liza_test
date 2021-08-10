@@ -1,0 +1,52 @@
+{%extends 'tigers/foundation.html'%}
+
+{% load static %}
+
+{% block main %}
+<div id="content">
+
+    <div class="doc_main_block">
+        <div id="scrollable">
+            <div class="scrollable-content">
+
+    <h2>{% block title %}{{title.title}}{% endblock %}</h2>
+
+
+
+<div class="paginator">
+    <p>
+    Страница:&nbsp;&nbsp;1 / <a href="/tigers/news" >{{l_n}} </a>
+    &nbsp;|&nbsp;
+    <a href="/tigers/news">Следующая</a>
+    </p>
+
+</div>
+    {% for i in news %}
+<div class="news">
+    <img src="{% static i.photo %}" width="240" height="171" alt= "{{ i.title }}"/>
+    <div class="title">
+        <h3>{{ i.title }}</h3>
+        <p class="date">
+            <span>{{i.date.day}}</span> {{i.date.month}} {{i.date.year}}
+        </p>
+        <a href="/tigers/news/{{i.id}}">Читать далее >>></a>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+
+    {% endfor %}
+
+<div class="paginator">
+    <p>
+        Страница:&nbsp;&nbsp;1 / <a href="/tigers/news"> {{l_n}} </a>
+        &nbsp;|&nbsp;
+        <a href="/tigers/news">Следующая</a>
+    </p>
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

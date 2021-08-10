@@ -1,0 +1,25 @@
+{%extends 'tigers/foundation.html'%}
+
+{% load static %}
+{% block main %}
+<div id="content">
+
+    <div class="doc_main_block">
+        <div id="scrollable">
+            <div class="scrollable-content">
+                <h2> {% block title %}{{title.title}}{% endblock %}</h2>
+                <div class="text">
+                {% block content %}
+                {{title.text| safe}}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
