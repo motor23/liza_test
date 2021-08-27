@@ -1,0 +1,47 @@
+{%extends 'tigers/pattern_2.html'%}
+{% load static %}
+
+{% block main %}
+
+
+    <div class="multimedia_main_block">
+        <h2>МУЛЬТИМЕДИА</h2>
+        <div class="types">
+            <a href="/tigers/multimedia/photos"
+               class="active">ФОТОГАЛЕРЕЯ</a>
+            <span>|</span>
+            <a href="/tigers/multimedia/video"
+               >ВИДЕОГАЛЕРЕЯ</a>
+        </div>
+        <div id="scrollable">
+            <div class="scrollable-content">
+
+
+
+
+    {% for a in photos %}
+
+<div class="album-photo">
+  <a href="/media/2021/6/2/60844/photolenta_big_photo.jpeg"
+     rel="milkbox[gall]">
+    <img alt={{a.title}} src={% static a.photo %} />
+  </a>
+  <span>+</span>
+  <p>{{a.title}}</p>
+</div>
+
+{% if forloop.counter|divisibleby:"3" %}
+<div style="clear: both;"></div>
+
+{% endif %}
+
+{% endfor %}
+
+
+</table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

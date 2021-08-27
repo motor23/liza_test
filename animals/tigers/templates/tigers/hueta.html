@@ -1,6 +1,8 @@
-{% load static %}
+
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load static %}
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -26,15 +28,15 @@
         <div class="overlay hide"></div>
         <div class="content-wrapper">
             <div id="header">
-                <img src="{% static 'logo.png' %}" width="75" height="100"
+                <img src="/static/tiger/img/logo.png" width="75" height="100"
                      alt="ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;"
                      title="ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;"/>
                 <div class="logo"
                      style="width:400px">
-                    <p class="title"><a href="/tigers/">ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;</a></p>
+                    <p class="title"><a href="/tiger/">ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;</a></p>
                     <p class="version">
 
-                            <a href="/en/tigers/">ENG</a>
+                            <a href="/en/tiger/">ENG</a>
 
                     </p>
                 </div>
@@ -65,49 +67,68 @@
             <!--[if IE]>
       <div class="top-padding">&nbsp;</div>
       <![endif]-->
+            <div id="content">
 
-            {% block main %}
-            {% endblock %}
+    <div class="doc_main_block">
+        <div id="scrollable">
+            <div class="scrollable-content">
 
-<div class="doc_right_block">
-<div class="media_caption">
-    {{count_p}} фотографий
-</div>
-
- <div class="previews">
-     <a href="#" class="arrow" id="photo1-aleft">
-         <img src="/static/tiger/img/arrow-left.png" width="23" height="23"
-              alt="left arrow"/>
-         <span>0</span>
-     </a>
-
-     <div id="photos">
-         {% for photo in photos%}
-         <a href="{% static photo.photo %}" rel="milkbox[gall]" title="{{photo.title}}">
-             <img alt="{{photo.title}}" src="{% static photo.photo %}" alt="0"/>
-         </a>
-         {% endfor%}
-     </div>
+{% block main %}
 
 
-     <a href="#" class="arrow" id="photo1-aright">
-         <img src="/static/tiger/img/arrow-right.png" width="23" height="23"
-              alt="right arrow"/>
-         <span>{{count_p}}</span>
-     </a>
-
-     <div style="clear: both;"></div>
- </div>
+{% endblock%}
 
 
 
-    <div class="media_caption">
-        {{count_v}} видеосюжета
+            </div>
+        </div>
     </div>
 
+    <div class="doc_right_block">
+
+            {% if photos_obj %}
+            <div class="media_caption">
+                7 фотографий
+            </div>
+            {%endif%}
+
+            <div class="previews">
+
+                <a href="?page=1" class="arrow" id="photo1-aleft">
+                    <img src="/static/tiger/img/arrow-left.png" width="23" height="23"
+                         alt="left arrow"/>
+                    <span>0</span>
+                </a>
+
+                <div id="photos">
+
+                        {% for photo in photos_obj %}
+                        <a href="{% static photo.photo %}" rel="milkbox[gall]"
+                           title="{{photo.title}}">
+                            <img alt="{{photo.title}}" src="{% static photo.small_photo %}" alt="6"/>
+                        </a>
+                        {% endfor %}
+
+                </div>
+
+                <a href="?page={{ photos_obj.paginator.num_pages }}" class="arrow" id="photo1-aright">
+                    <img src="/static/tiger/img/arrow-right.png" width="23" height="23"
+                         alt="right arrow"/>
+                    <span>7</span>
+                </a>
+                <div style="clear: both;"></div>
+            </div>
 
 
-    <div class="video__wrapper">
+
+
+            <div class="media_caption">
+                4 видеосюжета
+            </div>
+
+
+
+            <div class="video__wrapper">
     <div class="video-item-media">
         <video width="271" height="199" id="video-1"
                poster="None"
@@ -119,82 +140,90 @@
     </div>
 </div>
 
+            <div class="preplays">
+                <a href="#" class="arrow" id="video1-aleft">
+                    <img src="/static/tiger/img/arrow-left.png" width="23" height="23" alt=""/>
+                    <span></span>
+                </a>
+                <div id='video-list'>
+                            <a href="#video=4"
+                               data-href="http://archive.premier.gov.ru/media/2010/10/18/35977/video/181010_tigr_eng.flv"
+                               data-poster="/media/2010/10/18/35977/preview.jpeg"
+                               style="background: url(/media/2010/10/18/35977/preview60x60.png) 0 0 no-repeat;"
+                               title="The Amur Tiger Programme">
+                                <img src="/static/tiger/img/video-preview-overlay.png" alt=""/>
+                            </a>
 
-<div class="preplays">
-    <a href="#" class="arrow" id="video1-aleft">
-        <img src="/static/tiger/img/arrow-left.png" width="23" height="23" alt=""/>
-        <span></span>
-    </a>
-     {% for v in videos %}
-    <div id='video-list'>
-        <a href="#video=1"
-           data-href="http://archive.premier.gov.ruNone"
-           data-poster="None"
-           style="background: url(None) 0 0 no-repeat;"
-           title="{{v.title}}">
-            <img src="/static/tiger/img/video-preview-overlay.png" alt=""/>
-        </a>
+                </div>
+                <a href="#" class="arrow" id="video1-aright">
+                    <img src="/static/tiger/img/arrow-right.png" width="23" height="23" alt=""/>
+                    <span></span>
+                </a>
+            </div>
 
-     {% endfor %}
+
 
     </div>
-    <a href="#" class="arrow" id="video1-aright">
-        <img src="/static/tiger/img/arrow-right.png" width="23" height="23" alt=""/>
-        <span></span>
-    </a>
-</div>
 
-</div>
 
-<div style="clear: both;"></div>
-<div class="doc_bottom_block">
-<div class="menu">
 
-  <a class="item" href="/tigers/program">
+
+    <div style="clear: both;"></div>
+    <div class="doc_bottom_block">
+        <div class="menu">
+
+
+  <a class="item" href="/tiger/program">
     <img src="/static/tiger/img/square1.png" alt="О ПРОГРАММЕ" title="О ПРОГРАММЕ" />О ПРОГРАММЕ
   </a>
 
 
-  <a class="item" href="/tigers/animal">
+
+  <a class="item" href="/tiger/animal">
     <img src="/static/tiger/img/square2.png" alt="ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА" title="ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА" />ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА
   </a>
 
 
-  <a class="item" href="/tigers/history">
+
+  <a class="item" href="/tiger/history">
     <img src="/static/tiger/img/square3.png" alt="ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА" title="ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА" />ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА
   </a>
 
 
-  <a class="item" href="/tigers/premier">
+
+  <a class="item" href="/tiger/premier">
     <img src="/static/tiger/img/square4.png" alt="ВИЗИТ ВЛАДИМИРА ПУТИНА" title="ВИЗИТ ВЛАДИМИРА ПУТИНА" />ВИЗИТ ВЛАДИМИРА ПУТИНА
   </a>
 
 
 
-  <a class="item" href="/tigers/news">
+  <a class="item" href="/tiger/news">
     <img src="/static/tiger/img/square5.png" alt="НОВОСТИ ПРОЕКТА" title="НОВОСТИ ПРОЕКТА" />НОВОСТИ ПРОЕКТА
   </a>
 
 
-  <a class="item" href="/tigers/multimedia/photos">
+
+  <a class="item" href="/tiger/multimedia/photos">
     <img src="/static/tiger/img/square6.png" alt="МУЛЬТИМЕДИА" title="МУЛЬТИМЕДИА" />МУЛЬТИМЕДИА
   </a>
+
+
 
 
   <div class="map" style="background-image: url(/static/tiger/img/map-bg.png);">
       <a href="/tiger/map/">АРЕАЛ ТИГРА</a>
   </div>
+</div>
+    </div>
 
-</div>
-</div>
-</div>
+            </div>
             <!--[if IE]>
-<div class="bottom-padding">&nbsp;</div>
-<![endif]-->
-</div>
+      <div class="bottom-padding">&nbsp;</div>
+      <![endif]-->
 
+
+        </div>
         <script type="text/javascript" src="/static/tiger/js/all.packed.current.js"></script>
-
 
     <script type="text/javascript">
         window.addEvent('domready', function () {

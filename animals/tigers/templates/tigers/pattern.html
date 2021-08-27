@@ -1,25 +1,240 @@
-{%extends 'tigers/foundation.html'%}
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 {% load static %}
-{% block main %}
-<div id="content">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;</title>
+        <link rel="icon" href="/static/tiger/img/favicon.ico" type="image/x-icon"/>
+        <link rel="shortcut icon" href="/static/tiger/img/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="/static/tiger/css/all.packed.current.css" />
+
+
+        <!--[if IE 6]>
+        <style type="text/css">
+        * html .wrap
+        {
+            width:expression((document.compatMode && document.compatMode == 'CSS1Compat') ? (document.documentElement.clientWidth < 1000 ? "1000px" : (document.documentElement.clientWidth > 1200 ? "1200px" : "auto")) : (document.body.clientWidth < 1000 ? "1000px" : (document.body.clientWidth > 1200 ? "1200px" : "auto")));
+        }
+        </style>
+        <link rel="stylesheet" type="text/css" href="/static/animals/css/ie6.css" />
+    <![endif]-->
+        <!--[if IE]><link rel="stylesheet" type="text/css" href="/static/animals/css/ie.css" /><![endif]-->
+        <!--[if IE 7]><link rel="stylesheet" type="text/css" href="/static/animals/css/ie7.css" /><![endif]-->
+    </head>
+    <body style="background-image:url(/static/tiger/img/bg.jpg)">
+        <div class="overlay hide"></div>
+        <div class="content-wrapper">
+            <div id="header">
+                <img src="/static/tiger/img/logo.png" width="75" height="100"
+                     alt="ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;"
+                     title="ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;"/>
+                <div class="logo"
+                     style="width:400px">
+                    <p class="title"><a href="/tigers/">ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;</a></p>
+                    <p class="version">
+
+                            <a href="/en/tigers/">ENG</a>
+
+                    </p>
+                </div>
+                <div class="premier">
+                    <a href="/">СПЕЦИАЛЬНЫЕ ПРОЕКТЫ ПО ЗАЩИТЕ ЖИВОТНЫХ</a>
+                </div>
+
+                    <a href="http://amur-tiger.ru">
+                        <img src="/static/animals/img/logo-amur-tiger-ru.png"
+                             width="100" height="100" alt="Центр «Амурский тигр»"
+                             title="Центр «Амурский тигр»"/>
+                    </a>
+
+                <a href="http://www.rgo.ru/">
+                    <img src="/static/animals/img/logo-geosoc-ru.png"
+                         width="90" height="100" alt="Русское географическое общество"
+                         title="Русское географическое общество"/>
+                </a>
+                <a href="http://www.ras.ru/">
+                    <img src="/static/animals/img/logo-ran-ru.png"
+                         width="107" height="100" alt="Сайт Российской Академии Наук"
+                         title="Сайт Российской Академии Наук"/>
+                </a>
+
+                <div style="clear: both;"></div>
+            </div>
+
+            <!--[if IE]>
+      <div class="top-padding">&nbsp;</div>
+      <![endif]-->
+            <div id="content">
 
     <div class="doc_main_block">
         <div id="scrollable">
             <div class="scrollable-content">
-                <h2> {% block title %}{{title.title}}{% endblock %}</h2>
-                <div class="text">
-                {% block content %}
-                {{title.text| safe}}
-                {% endblock %}
-                </div>
+
+{% block main %}
+
+{% endblock%}
+
             </div>
         </div>
     </div>
 
 
 
+    <div class="doc_right_block">
+
+
+            {% if photos_obj %}
+            <div class="media_caption">
+                {#число фото#} фотографий
+            </div>
+            {%endif%}
+
+            <div class="previews">
+                    {% if photos_obj.has_previous %}
+                <a href="?page=1" class="arrow" id="photo1-aleft">
+                    <img src="/static/tiger/img/arrow-left.png" width="23" height="23"
+                         alt="left arrow"/>
+                    <span>{#число фото#}</span>
+                </a>
+                    {% endif%}
+                <div id="photos">
+
+                        {% for photo in photos_obj %}
+                        <a href="{% static photo.photo %}" rel="milkbox[gall]"
+                           title="{{photo.title}}">
+                            <img alt="{{photo.title}}" src="{% static photo.small_photo %}" alt="6"/>
+                        </a>
+                        {% endfor %}
+
+                </div>
+                {% if photos_obj.has_next %}
+                <a href="?page={{ photos_obj.paginator.num_pages }}" class="arrow" id="photo1-aright">
+                    <img src="/static/tiger/img/arrow-right.png" width="23" height="23"
+                         alt="right arrow"/>
+                    <span>{#число фото#}</span>
+                </a>
+                {%endif%}
+                <div style="clear: both;"></div>
+            </div>
 
 
 
-{% endblock %}
+            {% if videos_obj.has_previous %}
+            <div class="media_caption">
+                {# Колличество видеосюжетов #} видеосюжета
+            </div>
+
+
+
+            <div class="video__wrapper">
+    <div class="video-item-media">
+        <video width="271" height="199" id="video-1"
+               poster="None"
+               src="http://archive.premier.gov.ru"
+               preload="false">
+        </video>
+        <span class="video-item-link" title="Воспроизвести видео"> <i
+                class="video-item-icon"></i></span>
+    </div>
+
+</div>
+
+            <div class="preplays">
+                <a href="#" class="arrow" id="video1-aleft">
+                    <img src="/static/tiger/img/arrow-left.png" width="23" height="23" alt=""/>
+                    <span>{#Номер видеосюжета на котором находишься#}</span>
+                </a>
+
+                {# Тут начинаются видеосюжеты#}
+                <div id='video-list'>
+
+                    <a href="#video=1"
+                               data-href="http://archive.premier.gov.ruNone"
+                               data-poster="None"
+                               style="background: url(None) 0 0 no-repeat;"
+                               title="Идеальный хищник.flv">
+                                <img src="/static/tiger/img/video-preview-overlay.png" alt=""/>
+                            </a>
+
+                </div>
+                {#Тут заканчиваются видео сюжеты#}
+
+                <a href="#" class="arrow" id="video1-aright">
+                    <img src="/static/tiger/img/arrow-right.png" width="23" height="23" alt=""/>
+                    <span>{#Коллисечтво видеосюжетов#}</span>
+                </a>
+            </div>
+            {% endif %}
+
+
+    </div>
+
+
+
+
+    <div style="clear: both;"></div>
+    <div class="doc_bottom_block">
+        <div class="menu">
+
+
+  <a class="item" href="/tigers/program">
+    <img src="/static/tiger/img/square1.png" alt="О ПРОГРАММЕ" title="О ПРОГРАММЕ" />О ПРОГРАММЕ
+  </a>
+
+
+
+  <a class="item" href="/tigers/animal">
+    <img src="/static/tiger/img/square2.png" alt="ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА" title="ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА" />ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА
+  </a>
+
+
+
+  <a class="item" href="/tigers/history">
+    <img src="/static/tiger/img/square3.png" alt="ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА" title="ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА" />ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА
+  </a>
+
+
+
+  <a class="item" href="/tigers/premier">
+    <img src="/static/tiger/img/square4.png" alt="ВИЗИТ ВЛАДИМИРА ПУТИНА" title="ВИЗИТ ВЛАДИМИРА ПУТИНА" />ВИЗИТ ВЛАДИМИРА ПУТИНА
+  </a>
+
+
+
+  <a class="item" href="/tigers/news">
+    <img src="/static/tiger/img/square5.png" alt="НОВОСТИ ПРОЕКТА" title="НОВОСТИ ПРОЕКТА" />НОВОСТИ ПРОЕКТА
+  </a>
+
+
+
+  <a class="item" href="/tigers/multimedia/photos">
+    <img src="/static/tiger/img/square6.png" alt="МУЛЬТИМЕДИА" title="МУЛЬТИМЕДИА" />МУЛЬТИМЕДИА
+  </a>
+
+
+
+
+  <div class="map" style="background-image: url(/static/tiger/img/map-bg.png);">
+      <a href="/tiger/map/">АРЕАЛ ТИГРА</a>
+  </div>
+</div>
+    </div>
+
+            </div>
+            <!--[if IE]>
+      <div class="bottom-padding">&nbsp;</div>
+      <![endif]-->
+
+
+        </div>
+        <script type="text/javascript" src="/static/tiger/js/all.packed.current.js"></script>
+
+    <script type="text/javascript">
+        window.addEvent('domready', function () {
+            var milkbox = new Milkbox();
+        });
+    </script>
+
+    </body>
+</html>

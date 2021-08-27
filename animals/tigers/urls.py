@@ -10,7 +10,8 @@ urlpatterns = [
     path('animal/', views.animal, name='animal'),
     path('history/', views.history, name='history'),
     path('premier/', views.premier, name='premier'),
-    path('multimedia/photos/', views.photos, name='photos'),
+    path('multimedia/photos/', views.photosets, name='photos'),
+    path('multimedia/video/', views.videos, name='photos'),
     path('multimedia/photos/<int:id>', views.album, name='album'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

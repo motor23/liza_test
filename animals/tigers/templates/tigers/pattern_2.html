@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 {% load static %}
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,13 +7,13 @@
         <link rel="icon" href="/static/tiger/img/favicon.ico" type="image/x-icon"/>
         <link rel="shortcut icon" href="/static/tiger/img/favicon.ico" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="/static/tiger/css/all.packed.current.css" />
-        
-        
+
+
         <!--[if IE 6]>
         <style type="text/css">
         * html .wrap
         {
-            width:expression((document.compatMode && document.compatMode == 'CSS1Compat') ? (document.documentElement.clientWidth < 1000 ? "1000px" : (document.documentElement.clientWidth > 1200 ? "1200px" : "auto")) : (document.body.clientWidth < 1000 ? "1000px" : (document.body.clientWidth > 1200 ? "1200px" : "auto")));			
+            width:expression((document.compatMode && document.compatMode == 'CSS1Compat') ? (document.documentElement.clientWidth < 1000 ? "1000px" : (document.documentElement.clientWidth > 1200 ? "1200px" : "auto")) : (document.body.clientWidth < 1000 ? "1000px" : (document.body.clientWidth > 1200 ? "1200px" : "auto")));
         }
         </style>
         <link rel="stylesheet" type="text/css" href="/static/animals/css/ie6.css" />
@@ -33,21 +32,21 @@
                      style="width:400px">
                     <p class="title"><a href="/tigers/">ПРОГРАММА &laquo;АМУРСКИЙ ТИГР&raquo;</a></p>
                     <p class="version">
-                        
+
                             <a href="/en/tigers/">ENG</a>
-                        
+
                     </p>
                 </div>
                 <div class="premier">
                     <a href="/">СПЕЦИАЛЬНЫЕ ПРОЕКТЫ ПО ЗАЩИТЕ ЖИВОТНЫХ</a>
                 </div>
-                
+
                     <a href="http://amur-tiger.ru">
                         <img src="/static/animals/img/logo-amur-tiger-ru.png"
                              width="100" height="100" alt="Центр «Амурский тигр»"
                              title="Центр «Амурский тигр»"/>
                     </a>
-                
+
                 <a href="http://www.rgo.ru/">
                     <img src="/static/animals/img/logo-geosoc-ru.png"
                          width="90" height="100" alt="Русское географическое общество"
@@ -58,7 +57,7 @@
                          width="107" height="100" alt="Сайт Российской Академии Наук"
                          title="Сайт Российской Академии Наук"/>
                 </a>
-                
+
                 <div style="clear: both;"></div>
             </div>
 
@@ -66,88 +65,60 @@
       <div class="top-padding">&nbsp;</div>
       <![endif]-->
             <div id="content">
-                
-<div class="index_main_block">
-  <div class="media_line">
-    <div style="display:none">
-{% for photo in photos %}
-      <a href={% static photo.photo %} rel="milkbox:gall" title={{photo.title}}>
-        <img src={% static photo.photo %} alt={{photo.title}}/>
-      </a>
-{% endfor %}
-    
-    </div>
 
-    <div class="container">
-      <a href="#" class="arrow aleft" id="photolenta-left"><img src="/static/animals/img/arrow-l.gif" alt="" width="7" height="13" /></a>
-      <a href="#" class="arrow aright" id="photolenta-right"><img src="/static/animals/img/arrow-r.gif" alt="" width="7" height="13" /></a>
-      <div class="photos" id="photolenta" style="overflow: hidden;margin-left: 70px;margin-top: 0px;">
-      
-        {% for photo in photos %}
-          <a href={% static photo.photo %}><img src={% static photo.photo %} alt={{photo.title}}/></a>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+{% block main %}
 
 
-  <div class="announces">
-    <div class="caption">НОВОСТИ ПРОЕКТА</div>
-      <div class="text"> 
-          {% for n in news%}
-         <div class="item">
-              <div class="date fl">{{n.date.day|stringformat:"02d"}} / {{n.date.month|stringformat:"02d"}}</div>
-              <div class="lead"><a href="/tigers/news/{{n.id}}">{{n.title}}</a></div>
-          </div>
-          {% endfor %}
+{% endblock %}
 
-       </div>      
-    <div class="all">
-      <a class="iTarget" href="/tigers/news"><span class="">ВСЕ НОВОСТИ</span><span class="l">&nbsp;</span></a>
-    </div>
-  </div>
-</div>
+
 <div class="index_right_block">
   <div class="menu">
-  
-  
+
+
   <a class="item" href="/tigers/program">
     <img src="/static/tiger/img/square1.png" alt="О ПРОГРАММЕ" title="О ПРОГРАММЕ" />О ПРОГРАММЕ
   </a>
-  
-  
-  
+
+
+
   <a class="item" href="/tigers/animal">
     <img src="/static/tiger/img/square2.png" alt="ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА" title="ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА" />ВСЕ О ЖИЗНИ АМУРСКОГО ТИГРА
   </a>
-  
-  
-  
+
+
+
   <a class="item" href="/tigers/history">
     <img src="/static/tiger/img/square3.png" alt="ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА" title="ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА" />ИСТОРИЯ ИЗУЧЕНИЯ АМУРСКОГО ТИГРА
   </a>
-  
-  
-  
+
+
+
   <a class="item" href="/tigers/premier">
     <img src="/static/tiger/img/square4.png" alt="ВИЗИТ ВЛАДИМИРА ПУТИНА" title="ВИЗИТ ВЛАДИМИРА ПУТИНА" />ВИЗИТ ВЛАДИМИРА ПУТИНА
   </a>
-  
-  
-  
+
+
+
   <a class="item" href="/tigers/news">
     <img src="/static/tiger/img/square5.png" alt="НОВОСТИ ПРОЕКТА" title="НОВОСТИ ПРОЕКТА" />НОВОСТИ ПРОЕКТА
   </a>
-  
-  
-  
+
+
+
   <a class="item" href="/tigers/multimedia/photos">
     <img src="/static/tiger/img/square6.png" alt="МУЛЬТИМЕДИА" title="МУЛЬТИМЕДИА" />МУЛЬТИМЕДИА
   </a>
 
 
+
+
+
+    <div class="map" style="background-image: url(/media/tigermaps/smallmap.png);">
+      <a href="/tiger/map/">АРЕАЛ ТИГРА</a>
+
     </div>
-    
+
 </div>
 </div>
 
@@ -156,10 +127,10 @@
       <div class="bottom-padding">&nbsp;</div>
       <![endif]-->
 
-            
+
         </div>
         <script type="text/javascript" src="/static/tiger/js/all.packed.current.js"></script>
-        
+
 <script type="text/javascript">
   window.addEvent('domready', function(){
     milkbox = new Milkbox();
@@ -168,10 +139,10 @@
       var gal = milkbox.getGallery('gall');
       gal.each(function(value, index){
           if(value.href.contains(obj.href)){
-              milkbox.showGallery({ 
-                  gallery:'gall', 
-                  index:index, 
-                  autoplay:false 
+              milkbox.showGallery({
+                  gallery:'gall',
+                  index:index,
+                  autoplay:false
               })
           };
       });

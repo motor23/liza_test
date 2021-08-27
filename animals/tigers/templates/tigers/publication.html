@@ -1,34 +1,21 @@
-{%extends 'tigers/foundation.html'%}
-
+{%extends 'tigers/pattern.html'%}
 {% load static %}
-
 {% block main %}
- <div id="content">
-
-    <div class="doc_main_block">
-        <div id="scrollable">
-            <div class="scrollable-content">
-
 <div id="scroll">
   <div class="news">
 
 
-    <img src={% static news.photo %} width="240" height="171" alt= {{news.title}} />
+    <img src={% static news.photo %} width="240" height="171" alt={{news.title}} />
 
     <div class="title">
       <h3>{{news.title}} </h3>
       <p class="date">
-        <span>{{news.date}} </span>
+        <span>{{news.date.day|stringformat:"02d"}}</span> {{news.date.month|stringformat:"02d"}} {{news.date.year}}
       </p>
     </div>
     <div style="clear: both;"></div>
   </div>
   <div class="text">{{news.full_text| safe}}</div>
 </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="doc_right_block">
 
 {% endblock %}

@@ -1,52 +1,58 @@
-{%extends 'tigers/foundation.html'%}
-
+{%extends 'tigers/pattern.html'%}
 {% load static %}
-
 {% block main %}
-<div id="content">
 
-    <div class="doc_main_block">
-        <div id="scrollable">
-            <div class="scrollable-content">
-
-    <h2>{% block title %}{{title.title}}{% endblock %}</h2>
+    <h2>{{page.title}}</h2>
 
 
 
 <div class="paginator">
+
     <p>
-    Страница:&nbsp;&nbsp;1 / <a href="/tigers/news" >{{l_n}} </a>
+    Страница:&nbsp;&nbsp; {{ news_obj.number }}  / <a href=""> {{ news_obj.paginator.num_pages }} </a>
+        {% if news_obj.has_previous %}
     &nbsp;|&nbsp;
-    <a href="/tigers/news">Следующая</a>
+    <a href="?page={{ news_obj.previous_page_number }}">Предыдущая</a>
+        {% endif%}
+    {% if news_obj.has_next %}
+    &nbsp;|&nbsp;
+    <a href="?page={{ news_obj.next_page_number }}">Следующая</a>
+    {% endif%}
     </p>
 
 </div>
-    {% for i in news %}
-<div class="news">
-    <img src="{% static i.photo %}" width="240" height="171" alt= "{{ i.title }}"/>
-    <div class="title">
-        <h3>{{ i.title }}</h3>
-        <p class="date">
-            <span>{{i.date.day}}</span> {{i.date.month}} {{i.date.year}}
-        </p>
-        <a href="/tigers/news/{{i.id}}">Читать далее >>></a>
-    </div>
-    <div style="clear: both;"></div>
-</div>
 
-    {% endfor %}
+{#Начало новости#}
+
+{% for news in news_obj %}
+        <div class="news">
+            <img src="{% static news.photo %}" width="240" height="171" alt={{news.title}}/>
+            <div class="title">
+                <h3>{{news.title}}</h3>
+                <p class="date">
+                    <span>{{news.date.day|stringformat:"02d"}}</span> {{news.date.month|stringformat:"02d"}} {{news.date.year}}
+                </p>
+                <a href="/tigers/news/{{news.id}}">Читать далее >>></a>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+{%endfor%}
+{# Конец новости #}
+
 
 <div class="paginator">
+
     <p>
-        Страница:&nbsp;&nbsp;1 / <a href="/tigers/news"> {{l_n}} </a>
-        &nbsp;|&nbsp;
-        <a href="/tigers/news">Следующая</a>
+    Страница:&nbsp;&nbsp; {{ news_obj.number }}  / <a href=""> {{ news_obj.paginator.num_pages }} </a>
+        {% if news_obj.has_previous %}
+    &nbsp;|&nbsp;
+    <a href="?page={{ news_obj.previous_page_number }}">Предыдущая</a>
+        {% endif%}
+    {% if news_obj.has_next %}
+    &nbsp;|&nbsp;
+    <a href="?page={{ news_obj.next_page_number }}">Следующая</a>
+    {% endif%}
     </p>
+
 </div>
-            </div>
-        </div>
-    </div>
-
-
-
 {% endblock %}

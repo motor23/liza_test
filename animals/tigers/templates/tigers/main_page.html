@@ -1,0 +1,53 @@
+{%extends 'tigers/pattern_2.html'%}
+{% load static %}
+{% block main %}
+
+<div class="index_main_block">
+  <div class="media_line">
+    <div style="display:none">
+
+
+        {% for photo in photos %}
+      <a href={% static photo.photo %} rel="milkbox:gall" title={{photo.title}}>
+        <img src={% static photo.photo %} alt={{photo.title}}/>
+      </a>
+        {% endfor %}
+
+    </div>
+
+    <div class="container">
+      <a href="#" class="arrow aleft" id="photolenta-left"><img src="/static/animals/img/arrow-l.gif" alt="" width="7" height="13" /></a>
+      <a href="#" class="arrow aright" id="photolenta-right"><img src="/static/animals/img/arrow-r.gif" alt="" width="7" height="13" /></a>
+      <div class="photos" id="photolenta" style="overflow: hidden;margin-left: 70px;margin-top: 0px;">
+     {% for photo in photos %}
+
+          <a href={% static photo.photo %}><img src={% static photo.photo %} alt={{photo.title}}/></a>
+
+    {% endfor %}
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="announces">
+    <div class="caption">НОВОСТИ ПРОЕКТА</div>
+      <div class="text">
+          {% for n in news%}
+         <div class="item">
+              <div class="date fl">{{n.date.day|stringformat:"02d"}} / {{n.date.month|stringformat:"02d"}}</div>
+              <div class="lead"><a href="/tigers/news/{{n.id}}">{{n.title}}</a></div>
+          </div>
+          {% endfor %}
+
+       </div>
+    <div class="all">
+      <a class="iTarget" href="/tigers/news"><span class="">ВСЕ НОВОСТИ</span><span class="l">&nbsp;</span></a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

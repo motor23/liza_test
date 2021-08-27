@@ -1,89 +1,69 @@
-from .models import Pages, Photos, Pages_Photos, News, Pages_Videos, Videos,Photosets,Photosets_Photos, News_Photos
+import os
+from faker import Faker
+from .models import Pages, Photos,  News, Videos, Photosets
+import random
 
-def news_create():
-    file = open("C:\\Users\\Xiaomi\\liza_test\\animals\\tigers\\templates\\tigers\\input\\news_input.txt", "r", encoding="utf-8")
-    news = file.read().split("---")
-    news_parts = []
-    for n in news:
-        news_parts.append(n.split("***"))
-    news_parts.pop()
-    for n_p in news_parts:
-        publication = News(title=n_p[0], full_text=n_p[1], date=n_p[2][2:-2], photo=n_p[3][2:-2])
-        publication.save()
+def open_file(path):
+    os.environ["HOME"] = os.getcwd()
+    full_path = os.path.expanduser(path)
+    file = open(full_path, "r", encoding="utf-8")
+    elements = file.read().split("---")
+    elements_parts = []
+    for n in elements:
+        elements_parts.append(n.split("****"))
+    elements_parts.pop()
+    return elements_parts
 
-def pages_creat():
-    file = open("C:\\Users\\Xiaomi\\liza_test\\animals\\tigers\\templates\\tigers\\input\\pages_input.txt", "r", encoding="utf-8")
-    pages = file.read().split("---")
-    pages_parts = []
-    for n in pages:
-        pages_parts.append(n.split("****"))
-    pages_parts.pop()
+
+photos_link = ['tigers/news.jpeg', 'tigers/news1.jpeg', 'tigers/news2.jpeg', 'tigers/news3.jpeg', 'tigers/news_4.jpeg',
+               'tigers/news_5.jpeg', 'tigers/news_6.jpeg', 'tigers/news_7.jpeg', 'tigers/news_8.jpeg',
+               'tigers/news_9.jpeg', 'tigers/news_10.jpeg']
+
+def new_create():
+    fake = Faker('ru_RU')
+    title = fake.text()
+    full_text = fake.text()
+    date = fake.date()
+    photo = random.choice(photos_link)
+    publication = News(title=title, full_text=full_text, date=date, photo=photo)
+    publication.save()
+
+def pages_create():
+    path = "~\\tigers\\input\\pages_input.txt"
+    pages_parts = open_file(path)
     for p_p in pages_parts:
-        page = Pages(title=p_p[0][1:-1], text=p_p[1][1:-1])
+        page = Pages(id=int(p_p[0]), title=p_p[1][1:-1], text=p_p[2][1:-1])
         page.save()
 
 def photoset_create():
-    file = open("C:\\Users\\Xiaomi\\liza_test\\animals\\tigers\\templates\\tigers\\input\\photoset_input.txt", "r", encoding="utf-8")
-    photosets = file.read().split("---")
-    photosets_parts = []
-    for n in photosets:
-        photosets_parts.append(n.split("****"))
-    photosets_parts.pop()
-    for p_p in photosets_parts:
-        photoset = Photosets(title=p_p[0][1:-1], title_photo=p_p[1][2:-2])
-        photoset.save()
+    fake = Faker('ru_RU')
+    title = fake.text()
+    photo = random.choice(photos_link)
+    photoset = Photosets(title=title, title_photo=photo)
+    photoset.save()
+
+
+photos = ['tigers/photo1', 'tigers/photo2', 'tigers/photo3']
+
 
 def photo_create():
-    file = open("C:\\Users\\Xiaomi\\liza_test\\animals\\tigers\\templates\\tigers\\input\\input_photo.txt", "r", encoding="utf-8")
-    photos = file.read().split("----")
-    photos_parts = []
-    for n in photos:
-        photos_parts.append(n.split("****"))
-    photos_parts.pop()
-    for p_p in photos_parts:
-        photo = Photos(photo=p_p[0][2:-2], title=p_p[1][1:-1])
-        photo.save()
+    fake = Faker('ru_RU')
+    small_photo = random.choice(photos)
+    photo = small_photo + '_big.jpeg'
+    title = fake.text()
+    photo = Photos(small_photo=small_photo +'.jpeg', photo=photo, title=title)
+    photo.save()
 
-def photoset_photo_create():
-    photos = Photos.objects.filter(title__exact='В Приморском крае специалисты спасли жизнь раненого тигрёнка')
-    photoset = Photosets.objects.filter(title__exact='В Приморском крае специалисты спасли жизнь раненого тигрёнка')[0]
-    for photo in photos:
-        object = Photosets_Photos(photo_id=photo, photoset_id=photoset)
-        object.save()
-    photos = Photos.objects.filter(title__exact='Выпуск Санды в дикую природу запланирован на май 2021 года')
-    photoset = Photosets.objects.filter(title__exact='Выпуск Санды в дикую природу запланирован на май 2021 года')[0]
-    for photo in photos:
-        object = Photosets_Photos(photo_id=photo, photoset_id=photoset)
-        object.save()
-    photos = Photos.objects.filter(title__exact='Тигрица Санда вернулась в дикую природу')
-    photoset = Photosets.objects.filter(title__exact='Тигрица Санда вернулась в дикую природу')[0]
-    for photo in photos:
-        object = Photosets_Photos(photo_id=photo, photoset_id=photoset)
-        object.save()
-    photo = Photos.objects.filter(title__exact='Главной задачей программы является изучение пространственной структуры популяции амурского тигра, перемещений и численности этих кошек на территории России')[0]
-    photoset = Photosets.objects.filter(title__exact='Программа изучения амурских тигров')[0]
-    object = Photosets_Photos(photo_id=photo, photoset_id=photoset)
-    object.save()
-    photo = Photos.objects.filter(title__exact='Основная цель программы «Амурский тигр» - разработка научных основ для сохранения амурского тигра на территории российского Дальнего Востока')[0]
-    photoset = Photosets.objects.filter(title__exact='Программа изучения амурских тигров')[0]
-    object = Photosets_Photos(photo_id=photo, photoset_id=photoset)
-    object.save()
-    photo = Photos.objects.filter(title__exact='Программа изучения амурского тигра на российском Дальнем Востоке – самостоятельный проект в рамках Постоянно действующей экспедиции РАН по изучению животных Красной книги Российской Федерации и других особо важных животных фауны России')[0]
-    photoset = Photosets.objects.filter(title__exact='Программа изучения амурских тигров')[0]
-    object = Photosets_Photos(photo_id=photo, photoset_id=photoset)
-    object.save()
+def pages_photo_create(id):
+    page = Pages.objects.get(id__exact=id)
+    photos = Photos.objects.all()
+    photo = random.choice(photos)
+    page.connecting_to_photos.add(photo)
 
-def pages_photo_create():
-    photos = Photos.objects.filter(title__exact='Программа')
-    pages = Pages.objects.filter(title__exact='ПРОГРАММА ИЗУЧЕНИЯ АМУРСКОГО ТИГРА НА РОССИЙСКОМ ДАЛЬНЕМ ВОСТОКЕ')[0]
-    for photo in photos:
-        object = Pages_Photos(photo_id=photo, page_id=pages)
-        object.save()
+def photosets_photos_create():
+    photosets = Photosets.objects.all()
+    photos = Photos.objects.all()
+    for photoset in photosets:
+        for photo in photos:
+            photoset.connecting_to_photos.add(photo)
 
-def database_create():
-    news_create()
-    pages_creat()
-    photo_create()
-    photoset_create()
-    photoset_photo_create()
-    pages_photo_create()
