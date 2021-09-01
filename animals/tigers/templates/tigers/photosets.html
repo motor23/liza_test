@@ -35,3 +35,17 @@
         </div>
     </div>
 {% endblock %}
+
+        {% block script %}
+        <script type="text/javascript" src="/static/tiger/js/all.packed.current.js"></script>
+
+    <script type="text/javascript">
+        window.addEvent('domready', function () {
+            milkbox = new Milkbox({
+                navButtons: true,
+                imageOfText: 'из'
+            });
+        });
+    </script>
+
+        {% endblock %}

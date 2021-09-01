@@ -65,7 +65,7 @@ WSGI_APPLICATION = 'animals.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tigers',
+        'NAME': 'tiger',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',

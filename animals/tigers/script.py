@@ -67,3 +67,25 @@ def photosets_photos_create():
         for photo in photos:
             photoset.connecting_to_photos.add(photo)
 
+
+video_links = ["http://archive.premier.gov.ru/media/2020/7/28/60733/video_sd/20200728_Sandra_SD.mp4",
+              "http://archive.premier.gov.ru/media/2020/1/9/60660/video_sd/VTOROY_VYVODOK_SD.mp4",
+              "http://archive.premier.gov.ru/media/2020/1/9/60659/video_sd/TIGRYATA_ZHURAVLINY_SD.mp4",
+              "http://archive.premier.gov.ru/media/2020/1/9/60658/video_sd/CHETYRE_TIGRENKA_SD.mp4",
+              "http://archive.premier.gov.ru/media/2020/1/9/60657/video_sd/ZOLUSHKA_SD.mp4"]
+
+
+def video_create():
+    photo = random.choice(photos_link)
+    fake = Faker('ru_RU')
+    title = fake.text()
+    date = fake.date()
+    video = random.choice(video_links)
+    create_v = Videos(photo=photo, title=title, date=date, video=video)
+    create_v.save()
+
+def pages_video_create(id):
+    page = Pages.objects.get(id__exact=id)
+    videos = Videos.objects.all()
+    video = random.choice(videos)
+    page.connecting_to_videos.add(video)

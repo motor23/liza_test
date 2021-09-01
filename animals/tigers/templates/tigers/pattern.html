@@ -86,19 +86,20 @@
 
             {% if photos_obj %}
             <div class="media_caption">
-                {#число фото#} фотографий
+                {{ photos_obj | length}} фотографий
             </div>
             {%endif%}
 
             <div class="previews">
-                    {% if photos_obj.has_previous %}
-                <a href="?page=1" class="arrow" id="photo1-aleft">
+
+                <a href="#" class="arrow" id="photo1-aleft">
                     <img src="/static/tiger/img/arrow-left.png" width="23" height="23"
                          alt="left arrow"/>
                     <span>{#число фото#}</span>
                 </a>
-                    {% endif%}
                 <div id="photos">
+
+
 
                         {% for photo in photos_obj %}
                         <a href="{% static photo.photo %}" rel="milkbox[gall]"
@@ -108,24 +109,24 @@
                         {% endfor %}
 
                 </div>
-                {% if photos_obj.has_next %}
-                <a href="?page={{ photos_obj.paginator.num_pages }}" class="arrow" id="photo1-aright">
+
+
+                <a href="#" class="arrow" id="photo1-aright">
                     <img src="/static/tiger/img/arrow-right.png" width="23" height="23"
                          alt="right arrow"/>
                     <span>{#число фото#}</span>
                 </a>
-                {%endif%}
                 <div style="clear: both;"></div>
             </div>
 
 
 
-            {% if videos_obj.has_previous %}
+    {% if videos_obj %}
             <div class="media_caption">
-                {# Колличество видеосюжетов #} видеосюжета
+                {{videos_obj | length}} видеосюжета
             </div>
 
-
+    {%endif%}
 
             <div class="video__wrapper">
     <div class="video-item-media">
@@ -146,26 +147,26 @@
                     <span>{#Номер видеосюжета на котором находишься#}</span>
                 </a>
 
-                {# Тут начинаются видеосюжеты#}
+
                 <div id='video-list'>
-
-                    <a href="#video=1"
-                               data-href="http://archive.premier.gov.ruNone"
-                               data-poster="None"
-                               style="background: url(None) 0 0 no-repeat;"
-                               title="Идеальный хищник.flv">
-                                <img src="/static/tiger/img/video-preview-overlay.png" alt=""/>
-                            </a>
-
+                {% for video in videos_obj%}
+                    <a href="#video=3"
+                       data-href={{video.video}}
+                       data-poster="{% static video.photo %}"
+                       style="background: url(/media/2010/10/18/35976/preview60x60.png) 0 0 no-repeat;"
+                       title={{video.title}}>
+                        <img src="/static/tiger/img/video-preview-overlay.png" alt=""/>
+                    </a>
+                {% endfor %}
                 </div>
-                {#Тут заканчиваются видео сюжеты#}
+
+
 
                 <a href="#" class="arrow" id="video1-aright">
                     <img src="/static/tiger/img/arrow-right.png" width="23" height="23" alt=""/>
                     <span>{#Коллисечтво видеосюжетов#}</span>
                 </a>
             </div>
-            {% endif %}
 
 
     </div>
@@ -228,7 +229,7 @@
 
 
         </div>
-        <script type="text/javascript" src="/static/tiger/js/all.packed.current.js"></script>
+        <script type="text/javascript" src="/static/tiger/js/aall.packed.current.js"></script>
 
     <script type="text/javascript">
         window.addEvent('domready', function () {

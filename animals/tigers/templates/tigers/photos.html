@@ -45,3 +45,17 @@
     </div>
 
 {% endblock %}
+
+        {% block script %}
+
+    <script type="text/javascript">
+        window.addEvent('domready', function () {
+            milkbox = new Milkbox({
+                navButtons: true,
+                imageOfText: 'из'
+            });
+        });
+    </script>
+
+
+        {% endblock %}

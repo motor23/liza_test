@@ -16,25 +16,28 @@
 
     <ul class="cols">
 
-    {#Начало видео#}
+    {% for video in videos%}
         <li class="video-item" id="video-60881">
-            <p>{#Название видео#}</p>
+            <p>{{ video.title}}</p>
 
 
 
     <div class="video-item-media">
-        <video width="271" height="199" id="video-1"
-               poster="/tigers/program2_big.jpeg"
-               src="http://archive.premier.gov.ru/media/2021/8/3/60881/video_sd/Tigrica_u_vody_SD.mp4"
+        <video width="271" height="199" id={{video.id}}
+               poster="{% static video.photo %}"
+               src={{video.video}}
                preload="false">
         </video>
-        <span class="video-item-link" title="Воспроизвести видео"> <i
-                class="video-item-icon"></i></span>
+        <span class="video-item-link" title="Воспроизвести видео">
+            <i class="video-item-icon"></i>
+        </span>
+
     </div>
 
-                    </li>
+        </li>
 
-        {#Конец видео#}
+        {% endfor%}
+
     </ul>
 
             </div>
@@ -43,3 +46,8 @@
     </div>
 
 {% endblock %}
+
+        {% block script %}
+
+
+        {% endblock %}
